@@ -5,9 +5,13 @@ import subprocess
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
 from pydantic import BaseModel
 
 from crewai.flow import Flow, listen, start
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 from crews.data_analist_crew.data_analist_crew import DataAnalistCrew #from the_super_crew.crews.data_analist_crew.data_analist_crew import DataAnalistCrew

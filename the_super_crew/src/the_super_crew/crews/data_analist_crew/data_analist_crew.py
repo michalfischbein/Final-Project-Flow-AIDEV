@@ -2,10 +2,14 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from crewai_tools import SerperDevTool
+from dotenv import load_dotenv
 
 from typing import List
 
-# Initialize the SerperDevTool
+# Load environment variables from .env file
+load_dotenv()
+
+# Initialize the SerperDevTool (requires SERPER_API_KEY in .env)
 serper_tool = SerperDevTool()
 
 # If you want to run a snippet of code before or after the crew starts,
