@@ -1,0 +1,115 @@
+# =============================================================================
+# TASK 1: DEFINE VISUALIZATIONS
+# =============================================================================
+define_visuals_task:
+  description: >
+    Read 'action_recommendations.md' and 'business_insights.md' to review the key issues and insights marked for visualization.
+
+    For each issue or recommendation:
+    1. Suggest the best type of chart (e.g., bar chart, line chart, heatmap, scatter plot, box plot, etc.)
+    2. Specify which variables from the dataset should be used
+    3. Explain what the chart should show or prove
+    4. Prioritize which charts are most critical (High/Medium/Low)
+
+    Important Rule:
+    - Use only the data explicitly available in the provided reports. Do not invent variables, chart types, or assumptions beyond what's given.
+
+    Output as a Markdown list under the following format:
+    
+    ## Recommended Visualizations
+
+    ### Issue 1: [Title]
+    - **Chart Type:** [e.g. Line Chart]
+    - **Variables:** [e.g. Profit by Month]
+    - **Why this chart:** [Explain purpose]
+    - **Insight to communicate:** [Business message]
+    - **Priority:** [High/Medium/Low]
+
+    [Repeat for each item]
+
+  expected_output: >
+    Markdown report 'viz_plan.md' with visualization plan for 3–5 key issues.
+
+  agent: viz_planner
+
+  context:
+    - provide_recommendations_task
+    - generate_insights_task
+
+# =============================================================================
+# TASK: GENERATE VISUALIZATION CODE
+# =============================================================================
+generate_viz_code_task:
+  description: >
+    Your task is to generate Python code to create visualizations based on structured visualization prompts.
+
+    Input:
+    - 'viz_plan.md' – contains a list of issues and suggested charts.
+    - 'data_cleaned.csv' – the dataset.
+
+    For each visualization request in the file:
+    1. Read the description of the chart (type, variables, context).
+    2. Generate clean Python code using seaborn/matplotlib or plotly.
+    3. Add comments and title/axis labels to the chart.
+    4. Save the chart to PNG or HTML if applicable.
+
+    Critical Rules:
+    - Do not invent variable names or assume the presence of data not found in 'data_cleaned.csv'.
+    - Always validate variable names using CSVSearchTool before using them in code.
+    - If a chart type is not specified, choose the most informative option based on the provided goal.
+    - Use only the data explicitly provided – no external data, assumptions, or generated fields.
+    - Prefer seaborn for static charts and plotly for interactive charts.
+    - Keep code readable and modular.
+    - Do not include explanations – only code with inline comments.
+
+  expected_output: >
+    Markdown file: 'visualization_code.md' containing:
+    - For each chart:
+      ### Chart X: [Title]
+      ```python
+      [Python code to generate the chart]
+      ```
+
+  agent: viz_code_generator
+
+  context:
+    - define_visuals_task  # 👈 מסונכרן עם הפלט של הסוכן הראשון
+
+# =============================================================================
+# TASK: EXECUTE VISUALIZATION CODE
+# =============================================================================
+execute_visualizations_task:
+  description: >
+    Your task is to validate and execute visualization code provided by 
+    the previous agent, and produce working visual outputs.
+
+    Inputs:
+    - 'visualization_code.md' – Python code blocks for generating charts.
+    - 'data_cleaned.csv' – dataset to be used.
+
+    You must:
+    1. Review all code snippets and ensure they are syntactically correct.
+    2. If errors are found, correct them.
+    3. Create a single runnable Python script: 'generate_charts.py'
+    4. Run the code and export all resulting charts to files:
+       - PNG for static charts (seaborn, matplotlib)
+       - HTML for interactive charts (plotly)
+    5. Generate a Markdown summary:
+       - List of all charts created
+       - Filenames
+       - Chart type and variables used
+
+    Important:
+    - DO NOT modify the chart design unless necessary to make it run.
+    - Only use data provided in 'data_cleaned.csv'.
+    - Save all outputs to the local directory.
+
+  expected_output: >
+    1. Python script: 'generate_charts.py'
+    2. Chart files (PNG/HTML): 'chart_1.png', 'chart_2.html', etc.
+    3. Markdown report: 'visualization_outputs.md' with chart list and details.
+
+  agent: viz_executor
+
+  context:
+    - generate_viz_code_task

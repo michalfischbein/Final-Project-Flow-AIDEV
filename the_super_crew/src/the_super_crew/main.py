@@ -14,7 +14,8 @@ from crewai.flow import Flow, listen, start
 load_dotenv()
 
 
-from crews.data_analist_crew.data_analist_crew import DataAnalistCrew #from the_super_crew.crews.data_analist_crew.data_analist_crew import DataAnalistCrew
+from crews.data_analist_crew.data_analist_crew import DataAnalistCrew
+from crews.visualization_crew.visualizetion_crew import VisualizationCrew
 
 
 class DataAnalysisState(BaseModel):
@@ -22,6 +23,7 @@ class DataAnalysisState(BaseModel):
     statistical_analysis_complete: bool = False
     analysis_complete: bool = False
     findings: str = ""
+    visualization_complete: bool = False
 
 
 class DataAnalysisFlow(Flow[DataAnalysisState]):
@@ -116,6 +118,22 @@ class DataAnalysisFlow(Flow[DataAnalysisState]):
         print("Data analysis complete", result.raw)
         self.state.findings = result.raw
         self.state.analysis_complete = True
+
+    @listen(run_data_analysis)
+    def run_visualization(self):
+        """Run the CrewAI visualization crew"""
+        print("=" * 80)
+        print("📊 Starting CrewAI Visualization")
+        print("=" * 80)
+        
+        result = (
+            VisualizationCrew()
+            .crew()
+            .kickoff()
+        )
+
+        print("Visualization complete", result.raw)
+        self.state.visualization_complete = True
 
 
 def kickoff():

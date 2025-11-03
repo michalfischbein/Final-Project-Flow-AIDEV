@@ -5,30 +5,45 @@
 
 analyze_data_task:
   description: >
-    Read 'statistical_analysis_report.md' and explore 'data_cleaned.csv'.
-    
-    Your job:
-    1. Describe what you see in the data (facts + numbers only)
-    2. Identify patterns, trends, correlations, anomalies
-    3. List top/bottom performers across categories
-    4. Propose 10-15 research questions answerable with this data
-    
-    Rules:
-    - State WHAT you observe, never WHY
-    - Use exact numbers from the report
-    - Don't invent data - only use what's provided
-    - If unsure, verify with CSVSearchTool
-    - NO insights, interpretations, or recommendations
-    
-  expected_output: >
-    Markdown report with:
-    1. Data overview (scope, timeframe, key metrics)
-    2. Patterns & findings (correlations, trends, performance)
-    3. Research questions (10-15, must be answerable with available data)
-    4. Data gaps (what's missing)
-    
-  agent: data_detective
+    You are tasked with analyzing two data sources:
+    1. 'statistical_analysis_report.md' – a pre-generated summary report containing statistical metrics, summaries, and high-level insights.
+    2. 'data_cleaned.csv' – the cleaned dataset containing raw observations across multiple variables.
 
+
+    Your responsibilities:
+    1. Describe what is observed in the data – strictly factual and numeric.
+    2. Identify patterns, trends, anomalies, and correlations (only if they are explicitly calculated).
+    3. Highlight top and bottom performers using measurable values.
+    4. Formulate 10–15 research questions that are answerable using the dataset only.
+
+
+  expected_output: >
+    A structured Markdown report that includes:
+    - A clear overview of the dataset
+    - Factual patterns and statistical observations only
+    - 10–15 descriptive research questions, answerable using the data
+    - Any clearly identifiable gaps in the data
+
+    Rules:
+    - Always state WHAT is observed, never WHY.
+    - Support all findings with exact numbers or statistical measures.
+    - Any correlation mentioned must include the coefficient value and the calculation method (e.g., "Pearson r = 0.78").
+    - Do not speculate, interpret, or guess.
+    - Use CSVSearchTool when uncertain.
+    - Write your report in Markdown format, structured as follows:
+      1. Data Overview (scope, timeframe, key metrics)
+      2. Patterns & Findings (numeric, well-supported)
+      3. Research Questions (descriptive only, based on the data)
+      4. Data Gaps (only what is clearly missing)
+
+  expected_output: >
+    A structured Markdown report that includes:
+    - A clear overview of the dataset
+    - Factual patterns and statistical observations only
+    - 10–15 descriptive research questions, answerable using the data
+    - Any clearly identifiable gaps in the data
+
+  agent: data_detective
 
 
 # =============================================================================
