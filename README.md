@@ -1,6 +1,4 @@
-מצוין 🙌
-הנה הגרסה המלאה של **`README.md`** שלך — מעוצבת, מקצועית וקריאה לגיטהאב (עם אייקונים, קוד והנחיות מדויקות).
-הקפדתי לשלב סגנון showcase מודרני, אבל גם טון אקדמי-מקצועי 👇
+�
 
 ---
 
@@ -153,8 +151,4 @@ creating a reproducible and scalable analytics pipeline for business intelligenc
 
 ```
 
----
 
-רוצה שאעצב לך גם **תרשים זרימה גרפי קטן (Markdown ASCII או Mermaid)** שיתווסף מתחת ל־"Project Flow"?  
-זה יהפוך את ה־README שלך למושלם ויזואלית ב־GitHub.
-```
