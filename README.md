@@ -132,10 +132,10 @@ The following charts were generated based on the **Action Advisor’s** recommen
 
 | Name                 | Role                               |
 | -------------------- | ---------------------------------- |
-| **Michal Fischbein** | Project Lead & Data Flow Architect |
-| **Eldad Abadi**      | Data Analyst & Research            |
-| **Bat El Klein**     | Insight Strategist                 |
-| **Yehuda Frish**     | Visualization Engineer             |
+| **Michal Fischbein** | AI Developer |
+| **Eldad Abadi**      | AI Developer            |
+| **Bat El Klein**     | AI Developer                 |
+| **Yehuda Frish**     | AI Developer             |
 
 ---
 
