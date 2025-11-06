@@ -113,8 +113,8 @@ The following charts were generated based on the **Action Advisor’s** recommen
 
 | Crew                      | Description                                                                                              | Key Outputs                                         |
 | ------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| 🧩 **Data Analysis Crew** | Performs statistical and descriptive data analysis                                                       | `data_analysis_findings.md`, `business_insights.md` |
-| 💡 **Action Advisor**     | Selects high-impact business questions, recommends strategic actions, and identifies visualization needs | `action_recommendations.md`                         |
+| 🧩 **Data Analysis Code** |   performes data cleaning and statistical analysis                                                    |  |
+| 💡 **Data Analysis Crew**     |  Performs statistical and descriptive data analysis, Selects high-impact business questions, recommends strategic actions, and identifies visualization needs | `data_analysis_findings.md`, `business_insights.md``action_recommendations.md`                         |
 | 📈 **Visualization Crew** | Generates charts and exports clean visualization scripts                                                 | `.png` / `.html` charts                             |
 
 ---
